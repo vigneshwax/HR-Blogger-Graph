@@ -501,3 +501,281 @@
             max-width: 100%;
             max-height: 100%;
         }
+
+/* ========================================
+   MOBILE RESPONSIVE STYLES
+   ======================================== */
+
+/* Tablets and smaller */
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        padding: 4px;
+        gap: 4px;
+    }
+
+    #sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+    }
+
+    #mynetwork {
+        height: 60vh;
+    }
+
+    .btn-group {
+        flex-wrap: wrap;
+    }
+
+    .btn-group button {
+        min-width: calc(50% - 3px);
+    }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 2px;
+        gap: 2px;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    #sidebar {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        max-height: 45vh;
+        overflow-y: auto;
+    }
+
+    .window-body {
+        padding: 6px;
+        max-height: calc(45vh - 18px);
+    }
+
+    #mynetwork {
+        width: 100%;
+        height: 55vh;
+        flex: 1;
+    }
+
+    #networkCanvas {
+        height: calc(55vh - 18px);
+    }
+
+    /* Larger touch-friendly buttons */
+    button {
+        min-height: 32px;
+        height: auto;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .btn-group button {
+        min-width: calc(50% - 3px);
+        flex: 1 1 calc(50% - 3px);
+    }
+
+    /* Make input fields larger for touch */
+    input[type="text"], select {
+        font-size: 14px;
+        padding: 6px 8px;
+        min-height: 36px;
+    }
+
+    /* Adjust fieldsets */
+    fieldset {
+        padding: 6px;
+        margin-bottom: 8px;
+    }
+
+    .field-row {
+        margin-bottom: 8px;
+    }
+
+    /* Autocomplete adjustments */
+    .autocomplete-suggestions {
+        max-height: 180px;
+        font-size: 13px;
+    }
+
+    .autocomplete-item {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    /* Modal adjustments for mobile */
+    .modal-window {
+        width: 96%;
+        height: 94%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .modal-address-bar {
+        flex-wrap: wrap;
+    }
+
+    .modal-address-bar input {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+
+    .modal-address-bar button {
+        flex: 1;
+        min-width: 60px;
+    }
+
+    /* Hide some less critical elements on small screens */
+    .modal-status-bar {
+        font-size: 10px;
+        padding: 2px;
+    }
+
+    /* Adjust legend */
+    .legend-item {
+        font-size: 12px;
+    }
+
+    .legend-color {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Status bar adjustments */
+    .status-bar {
+        flex-wrap: wrap;
+        font-size: 10px;
+    }
+
+    .status-bar-field {
+        font-size: 10px;
+    }
+}
+
+/* Small mobile phones */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 11px;
+    }
+
+    .title-bar-text {
+        font-size: 10px;
+    }
+
+    .container {
+        padding: 1px;
+        gap: 2px;
+    }
+
+    #sidebar {
+        max-height: 50vh;
+    }
+
+    .window-body {
+        padding: 4px;
+    }
+
+    #mynetwork {
+        height: 50vh;
+    }
+
+    #networkCanvas {
+        height: calc(50vh - 18px);
+    }
+
+    button {
+        font-size: 11px;
+        padding: 5px 8px;
+        min-width: 60px;
+    }
+
+    .btn-group {
+        gap: 4px;
+    }
+
+    .btn-group button {
+        min-width: calc(50% - 2px);
+    }
+
+    input[type="text"], select {
+        font-size: 13px;
+    }
+
+    /* Stack modal controls vertically */
+    .modal-address-bar {
+        flex-direction: column;
+    }
+
+    .modal-address-bar label {
+        margin-bottom: 4px;
+    }
+
+    .modal-address-bar input {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+
+    .modal-address-bar button {
+        width: 100%;
+    }
+
+    /* Smaller modal on very small screens */
+    .modal-window {
+        width: 98%;
+        height: 96%;
+    }
+
+    h2 {
+        font-size: 11px;
+    }
+
+    legend {
+        font-size: 11px;
+    }
+}
+
+/* Landscape mode for mobile */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    #sidebar {
+        max-height: 35vh;
+    }
+
+    #mynetwork {
+        height: 65vh;
+    }
+
+    #networkCanvas {
+        height: calc(65vh - 18px);
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    button {
+        min-height: 36px;
+        padding: 8px 12px;
+    }
+
+    .title-bar-controls button {
+        width: 20px;
+        height: 18px;
+        min-width: 20px;
+    }
+
+    input[type="text"], select {
+        min-height: 40px;
+        font-size: 14px;
+    }
+
+    .autocomplete-item {
+        padding: 10px 12px;
+        min-height: 40px;
+    }
+}
