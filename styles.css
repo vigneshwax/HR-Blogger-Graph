@@ -534,6 +534,11 @@
 }
 
 /* Mobile phones */
+
+    /* Hide modal status bar on mobile */
+    .modal-status-bar {
+        display: none !important;
+    }
 @media screen and (max-width: 768px) {
     body {
         font-size: 12px;
