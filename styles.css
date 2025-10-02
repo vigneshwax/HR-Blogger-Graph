@@ -1,0 +1,503 @@
+:root {
+            /* Classic Windows 98 Colors */
+            --win98-gray: #c0c0c0;
+            --win98-dark-gray: #808080;
+            --win98-white: #ffffff;
+            --win98-black: #000000;
+            --win98-blue: #000080;
+            --win98-light-blue: #0080ff;
+            --win98-title-bar: #000080;
+            --win98-title-bar-gradient: linear-gradient(to right, #000080, #1084d0);
+            --win98-desktop: rgba(0, 128, 128, 0.7);
+            --win98-highlight: #010101;
+            --win98-button-face: #c0c0c0;
+            --win98-button-shadow: #808080;
+            --win98-button-dark-shadow: #000000;
+            --win98-button-light: #ffffff;
+            --win98-button-highlight: #dfdfdf;
+        }
+        /* Proper Dark Theme Colors with WCAG Compliance */
+        body.dark-theme {
+            --win98-gray: #2b2b2b;
+            --win98-dark-gray: #1a1a1a;
+            --win98-white: #e8e8e8;
+            --win98-black: #e8e8e8;
+            --win98-blue: #2563eb;
+            --win98-light-blue: #60a5fa;
+            --win98-title-bar: #1e293b;
+            --win98-title-bar-gradient: linear-gradient(to right, #1e293b, #334155);
+            --win98-desktop: #0f172a;
+            --win98-highlight: #3b82f6;
+            --win98-button-face: #2b2b2b;
+            --win98-button-shadow: #1a1a1a;
+            --win98-button-dark-shadow: #0a0a0a;
+            --win98-button-light: #3d3d3d;
+            --win98-button-highlight: #3d3d3d;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Arial, sans-serif;
+            font-size: 11px;
+            background: var(--win98-desktop);
+            color: var(--win98-black);
+            height: 100vh;
+            overflow: hidden;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+            padding: 8px;
+            gap: 8px;
+        }
+        .window {
+            background: var(--win98-button-face);
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-dark-shadow),
+                inset 1px 1px 0 var(--win98-button-light),
+                inset -2px -2px 0 var(--win98-button-shadow),
+                inset 2px 2px 0 var(--win98-button-highlight);
+            transition: background 0.3s ease;
+        }
+        #sidebar {
+            width: 320px;
+            flex-shrink: 0;
+        }
+        .title-bar {
+            background: var(--win98-title-bar-gradient);
+            padding: 2px 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 18px;
+        }
+        .title-bar-text {
+            color: var(--win98-white);
+            font-weight: bold;
+            font-size: 11px;
+            letter-spacing: 0;
+        }
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+        .title-bar-controls button {
+            width: 16px;
+            height: 14px;
+            padding: 0;
+            font-size: 8px;
+            min-width: 16px;
+        }
+        .window-body {
+            padding: 8px;
+            background: var(--win98-button-face);
+            height: calc(100% - 18px);
+            overflow-y: auto;
+            transition: background 0.3s ease;
+        }
+        .window-body::-webkit-scrollbar {
+            width: 16px;
+        }
+        .window-body::-webkit-scrollbar-track {
+            background: var(--win98-dark-gray);
+            box-shadow: inset 1px 1px 0 var(--win98-button-shadow);
+        }
+        .window-body::-webkit-scrollbar-thumb {
+            background: var(--win98-button-face);
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-dark-shadow),
+                inset 1px 1px 0 var(--win98-button-light),
+                inset -2px -2px 0 var(--win98-button-shadow),
+                inset 2px 2px 0 var(--win98-button-highlight);
+        }
+        .window-body::-webkit-scrollbar-button {
+            height: 16px;
+            background: var(--win98-button-face);
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-dark-shadow),
+                inset 1px 1px 0 var(--win98-button-light);
+        }
+        .field-row {
+            margin-bottom: 10px;
+        }
+        fieldset {
+            border: 2px groove var(--win98-button-light);
+            padding: 8px;
+            margin-bottom: 10px;
+            background: var(--win98-button-face);
+            transition: border-color 0.3s ease;
+        }
+        legend {
+            font-weight: bold;
+            padding: 0 4px;
+            color: var(--win98-black);
+            transition: color 0.3s ease;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 3px 4px;
+            border: none;
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-light),
+                inset 1px 1px 0 var(--win98-button-dark-shadow),
+                inset -2px -2px 0 var(--win98-button-highlight),
+                inset 2px 2px 0 var(--win98-button-shadow);
+            background: var(--win98-white);
+            color: var(--win98-black);
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            font-size: 11px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        body.dark-theme input[type="text"], 
+        body.dark-theme select {
+            background: #1a1a1a;
+            color: #e8e8e8;
+        }
+        input[type="text"]:focus, select:focus {
+            outline: 1px dotted var(--win98-light-blue);
+            outline-offset: -4px;
+        }
+        button {
+            background: var(--win98-button-face);
+            color: var(--win98-black);
+            border: none;
+            padding: 4px 12px;
+            min-width: 75px;
+            height: 23px;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            font-size: 11px;
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-dark-shadow),
+                inset 1px 1px 0 var(--win98-button-light),
+                inset -2px -2px 0 var(--win98-button-shadow),
+                inset 2px 2px 0 var(--win98-button-highlight);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            filter: brightness(1.1);
+        }
+        button:active {
+            box-shadow:
+                inset 1px 1px 0 var(--win98-button-dark-shadow),
+                inset -1px -1px 0 var(--win98-button-light),
+                inset 2px 2px 0 var(--win98-button-shadow),
+                inset -2px -2px 0 var(--win98-button-highlight);
+            padding: 5px 11px 3px 13px;
+        }
+        button:focus {
+            outline: 1px dotted var(--win98-light-blue);
+            outline-offset: -6px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 6px;
+            justify-content: space-between;
+        }
+        .btn-group button {
+            flex: 1;
+        }
+        /* Theme Toggle Button */
+        #themeToggle {
+            width: 100%;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        #themeToggle span {
+            margin-right: 4px;
+        }
+        /* Status Bar Style Box */
+        .status-bar {
+            padding: 2px 4px;
+            border-top: 1px solid var(--win98-button-light);
+            background: var(--win98-button-face);
+            display: flex;
+            gap: 6px;
+            transition: background 0.3s ease;
+        }
+        .status-bar-field {
+            padding: 2px 3px;
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-light),
+                inset 1px 1px 0 var(--win98-button-shadow);
+            flex: 1;
+            color: var(--win98-black);
+            transition: color 0.3s ease;
+        }
+        .autocomplete-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--win98-white);
+            border: 2px solid var(--win98-button-shadow);
+            max-height: 220px;
+            overflow-y: auto;
+            z-index: 1000;
+            margin-top: 2px;
+            display: none;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+            transition: background 0.3s ease;
+        }
+        body.dark-theme .autocomplete-suggestions {
+            background: #1a1a1a;
+            border-color: #3d3d3d;
+        }
+        .autocomplete-suggestions::-webkit-scrollbar {
+            width: 16px;
+        }
+        .autocomplete-suggestions::-webkit-scrollbar-track {
+            background: var(--win98-dark-gray);
+        }
+        .autocomplete-suggestions::-webkit-scrollbar-thumb {
+            background: var(--win98-button-face);
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-dark-shadow),
+                inset 1px 1px 0 var(--win98-button-light);
+        }
+        .autocomplete-category {
+            padding: 4px 6px;
+            background: var(--win98-dark-gray);
+            color: var(--win98-white);
+            font-weight: bold;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--win98-button-shadow);
+        }
+        body.dark-theme .autocomplete-category {
+            background: #1e293b;
+            color: #60a5fa;
+        }
+        .autocomplete-item {
+            padding: 5px 12px;
+            cursor: pointer;
+            font-size: 11px;
+            color: var(--win98-black);
+            transition: all 0.1s ease;
+            border-bottom: 1px solid var(--win98-button-highlight);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        body.dark-theme .autocomplete-item {
+            color: #e8e8e8;
+            border-bottom-color: #3d3d3d;
+        }
+        .autocomplete-item:hover {
+            background: var(--win98-highlight);
+            color: #ffffff;
+        }
+        .autocomplete-item::before {
+            content: '▸';
+            font-size: 9px;
+            opacity: 0.7;
+        }
+        .autocomplete-item.label-item {
+            font-weight: bold;
+            background: rgba(128, 0, 128, 0.1);
+        }
+        body.dark-theme .autocomplete-item.label-item {
+            background: rgba(147, 51, 234, 0.2);
+        }
+        .autocomplete-item.label-item::before {
+            content: '●';
+            color: #800080;
+        }
+        body.dark-theme .autocomplete-item.label-item::before {
+            color: #9333ea;
+        }
+        .no-results {
+            padding: 8px 12px;
+            color: var(--win98-dark-gray);
+            font-style: italic;
+            text-align: center;
+        }
+        #mynetwork {
+            flex: 1;
+        }
+        #networkCanvas {
+            height: calc(100% - 18px);
+            background: var(--win98-white);
+            transition: background 0.3s ease;
+        }
+        body.dark-theme #networkCanvas {
+            background: #1a1a1a;
+        }
+        /* Separator */
+        .separator {
+            height: 2px;
+            background: var(--win98-button-shadow);
+            border-top: 1px solid var(--win98-button-light);
+            margin: 10px 0;
+        }
+        h2 {
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: var(--win98-black);
+            transition: color 0.3s ease;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+            font-size: 11px;
+            color: var(--win98-black);
+            transition: color 0.3s ease;
+        }
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border: 1px solid var(--win98-button-shadow);
+            margin-right: 6px;
+        }
+        /* ===== MODAL POPUP STYLES ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        body.dark-theme .modal-overlay {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-window {
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            max-height: 800px;
+            background: var(--win98-button-face);
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-dark-shadow),
+                inset 1px 1px 0 var(--win98-button-light),
+                inset -2px -2px 0 var(--win98-button-shadow),
+                inset 2px 2px 0 var(--win98-button-highlight),
+                4px 4px 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s ease;
+        }
+        .modal-title-bar {
+            background: var(--win98-title-bar-gradient);
+            padding: 2px 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 20px;
+            cursor: move;
+        }
+        .modal-title-bar-text {
+            color: var(--win98-white);
+            font-weight: bold;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .modal-title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+        .modal-title-bar-controls button {
+            width: 16px;
+            height: 14px;
+            padding: 0;
+            font-size: 8px;
+            min-width: 16px;
+        }
+        .modal-address-bar {
+            background: var(--win98-button-face);
+            padding: 4px;
+            border-bottom: 1px solid var(--win98-button-shadow);
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        .modal-address-bar label {
+            font-weight: bold;
+            font-size: 11px;
+            color: var(--win98-black);
+            transition: color 0.3s ease;
+        }
+        .modal-address-bar input {
+            flex: 1;
+            padding: 2px 4px;
+            border: none;
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-light),
+                inset 1px 1px 0 var(--win98-button-dark-shadow),
+                inset -2px -2px 0 var(--win98-button-highlight),
+                inset 2px 2px 0 var(--win98-button-shadow);
+            background: var(--win98-white);
+            color: var(--win98-black);
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            font-size: 11px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        body.dark-theme .modal-address-bar input {
+            background: #1a1a1a;
+            color: #e8e8e8;
+        }
+        .modal-address-bar button {
+            min-width: 50px;
+        }
+        .modal-content {
+            flex: 1;
+            background: var(--win98-white);
+            border: 2px solid var(--win98-button-face);
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+        body.dark-theme .modal-content {
+            background: #1a1a1a;
+        }
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: var(--win98-white);
+        }
+        body.dark-theme .modal-iframe {
+            background: #1a1a1a;
+        }
+        .modal-status-bar {
+            background: var(--win98-button-face);
+            padding: 2px 4px;
+            border-top: 1px solid var(--win98-button-light);
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease;
+        }
+        .modal-status-bar-field {
+            padding: 2px 4px;
+            box-shadow:
+                inset -1px -1px 0 var(--win98-button-light),
+                inset 1px 1px 0 var(--win98-button-shadow);
+            flex: 1;
+            color: var(--win98-black);
+            transition: color 0.3s ease;
+        }
+        /* Fullscreen mode */
+        .modal-window.fullscreen {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+        }

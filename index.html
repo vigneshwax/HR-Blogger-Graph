@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Knowledge Graph - Windows 98 Edition</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <!-- Sidebar Window -->
+    <div id="sidebar" class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">HR Knowledge Graph</div>
+        </div>
+        <div class="window-body">
+            <!-- Theme Toggle -->
+            <button id="themeToggle" onclick="toggleTheme()">
+                <span id="themeIcon">☀️</span>
+                <span id="themeLabel">Light Theme</span>
+            </button>
+            <!-- Search -->
+            <fieldset>
+                <legend>Search Nodes</legend>
+                <div class="field-row" style="position: relative;">
+                    <input type="text" id="searchBox" placeholder="Type to search..." autocomplete="off">
+                    <div id="autocompleteSuggestions" class="autocomplete-suggestions"></div>
+                </div>
+            </fieldset>
+            <!-- Filter -->
+            <fieldset>
+                <legend>Filter by Labels</legend>
+                <div class="field-row">
+                    <select id="labelFilter">
+                        <option value="all">All Labels</option>
+                        <option value="1">HR Tools</option>
+                        <option value="2">HRIS</option>
+                        <option value="3">HR Analytics</option>
+                        <option value="4">Laws</option>
+                        <option value="5">Career Guidance</option>
+                        <option value="6">Interview</option>
+                        <option value="7">Case Studies</option>
+                        <option value="8">Forms</option>
+                        <option value="9">Excel</option>
+                        <option value="10">PowerBI</option>
+                        <option value="11">AI in HR</option>
+                        <option value="12">Google Sheets</option>
+                        <option value="13">Data</option>
+                        <option value="14">Free Templates</option>
+                        <option value="15">Fun Fest Ideas</option>
+                        <option value="16">Discussion</option>
+                        <option value="17">Others</option>
+                    </select>
+                </div>
+            </fieldset>
+            <!-- Stats -->
+            <div class="status-bar" style="margin-bottom: 10px;">
+                <div class="status-bar-field">Nodes: <span id="totalNodes">0</span></div>
+                <div class="status-bar-field">Visible: <span id="visibleNodes">0</span></div>
+                <div class="status-bar-field">Posts: <span id="totalPosts">0</span></div>
+            </div>
+            <!-- Controls -->
+            <fieldset>
+                <legend>View Controls</legend>
+                <div class="field-row btn-group">
+                    <button onclick="zoomIn()">Zoom In</button>
+                    <button onclick="zoomOut()">Zoom Out</button>
+                </div>
+            </fieldset>
+            <!-- Actions -->
+            <div class="field-row btn-group">
+                <button onclick="resetView()">Reset View</button>
+                <button onclick="exportGraph()">Export PNG</button>
+            </div>
+            <div class="separator"></div>
+            <!-- Legend -->
+            <fieldset>
+                <legend>Legend</legend>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #800080;"></div>
+                    <span>Category Labels (17)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #F5FFFA;"></div>
+                    <span>Blog Posts (Click to open)</span>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <!-- Network Window -->
+    <div id="mynetwork" class="window">
+        <div class="title-bar">
+            <div class="title-bar-text">Graph Visualization</div>
+        </div>
+        <div id="networkCanvas"></div>
+    </div>
+</div>
+
+
+<!-- Modal Popup -->
+<div id="modalOverlay" class="modal-overlay">
+    <div id="modalWindow" class="modal-window">
+        <div class="modal-title-bar">
+            <div class="modal-title-bar-text">
+                <span id="modalTitle">Internet Explorer</span>
+            </div>
+            <div class="modal-title-bar-controls">
+                <button aria-label="Minimize" onclick="minimizeModal()">_</button>
+                <button aria-label="Maximize" onclick="toggleFullscreen()">□</button>
+                <button aria-label="Close" onclick="closeModal()">×</button>
+            </div>
+        </div>
+        <div class="modal-address-bar">
+            <button onclick="goBack()">◄ Back</button>
+            <label>Address:</label>
+            <input type="text" id="modalUrlInput">
+            <button onclick="goToUrl()">Go</button>
+        </div>
+        <div class="modal-content">
+            <iframe id="modalIframe" class="modal-iframe" src=""></iframe>
+        </div>
+        <div class="modal-status-bar">
+            <div class="modal-status-bar-field" id="modalStatusText">Ready</div>
+        </div>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
